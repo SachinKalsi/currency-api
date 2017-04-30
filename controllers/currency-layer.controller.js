@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../config/custom-mongoose');
 const CurrencyLayer = mongoose.model('currency_layer');
 const request = require('request');
 const currencies = require('../constants').currencies;
@@ -22,6 +22,14 @@ function saveCurrencyLayer(api_response , callback) {
 }
 
 module.exports.createList = function(req, res) {
+    if(!(req.body.name && req.body.pass && req.body.name === 'Bharath' && req.body.pass === 'Bharath')) {
+        return res.status(403).send({
+            success: false,
+            error: {
+                message: 'You are not authorised'
+            }
+        });
+    }
     request.get(CURRENCY_LAYER_URL + '?access_key=' + process.env.access_key, function(error, response, body) {
         if(response.statusCode === 200) {
             var api_response = JSON.parse(response.body.toString());

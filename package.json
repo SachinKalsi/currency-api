@@ -15,7 +15,10 @@
   "dependencies": {
     "express": "~4.15.2",
     "mongoose": "~4.9.6",
-    "request": "~2.81.0"
+    "request": "~2.81.0",
+    "bluebird": "~3.5.0",
+    "node-schedule": "~1.2.1",
+    "body-parser": "~1.17.1"
   },
   "devDependencies": {
     "eslint": "2.4.0"

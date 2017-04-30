@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../config/custom-mongoose');
 const CurrencyLayer = mongoose.model('currency_layer');
 const currencies = require('../constants').currencies;
 const changeBaseCurrency = require('../util/change-base-currency');
@@ -10,7 +10,9 @@ module.exports.getList = function(req, res) {
          'createdAt': 0,
          'updatedAt': 0,
          '__v': 0
-     },function(err, result) {
+     }).sort({
+         _id: -1
+     }).exec(function(err, result) {
         var changeSource = req.query.source || 'INR';
         var price = req.query.price || 1;
 
@@ -54,7 +56,9 @@ module.exports.convertCurrency = function(req, res) {
          'createdAt': 0,
          'updatedAt': 0,
          '__v': 0
-     },function(err, result) {
+     }).sort({
+         _id: -1
+     }).exec(function(err, result) {
          var SourceToINR, destinationPrice;
          result.currency_values.forEach(function(quote) {
              if(quote.name === source) {
