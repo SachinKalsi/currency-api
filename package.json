@@ -2,7 +2,7 @@
   "name": "currency-api",
   "version": "0.0.0",
   "description": "Currency API",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +11,13 @@
     "url": "https://sachinkalsi@bitbucket.org/sachinkalsi/currency-api.git"
   },
   "author": "Kalsi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.15.2",
+    "mongoose": "~4.9.6",
+    "request": "~2.81.0"
+  },
+  "devDependencies": {
+    "eslint": "2.4.0"
+  }
 }
