@@ -35,12 +35,20 @@ module.exports.getList = function(req, res) {
 module.exports.convertCurrency = function(req, res) {
     var source = req.query.source;
     var destination = req.query.destination;
-    var price = req.query.price;
-    if(!(source && destination && !isNaN(price))) {
+    var price = req.query.price || 1;
+    if(!(source && destination)) {
         return res.json({
             success: false,
             error: {
-                message: 'Invalid Parameters: Please mention source, destination and price'
+                message: 'Invalid Parameters: Please mention source, destination'
+            }
+        })
+    }
+    if(isNaN(price)){
+        return res.json({
+            success: false,
+            error: {
+                message: 'Invalid value for the parameter price'
             }
         })
     }
