@@ -41,6 +41,7 @@ function changeBaseCurrency(source, destination, currency_values, price) {
         });
     });
     response.success = true;
+    response.source = destination;
     response.currency_values = convertedCurrencies;
     return response;
 }
