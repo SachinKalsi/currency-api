@@ -13,12 +13,22 @@ module.exports.getList = function(req, res) {
      }).sort({
          _id: -1
      }).exec(function(err, result) {
-        var changeSource = req.query.source || 'INR';
-        var price = req.query.price || 1;
+         if(result){
+             var changeSource = req.query.source || 'INR';
+             var price = req.query.price || 1;
 
-        var result = changeBaseCurrency('INR', changeSource , result.currency_values, price);
-        result.source = changeSource.toUpperCase();
-        return res.json(result);
+             var result = changeBaseCurrency('INR', changeSource , result.currency_values, price);
+             result.source = changeSource.toUpperCase();
+             return res.json(result);
+         } else {
+             res.json({
+                 success: false,
+                 error: {
+                     message: 'Something went wrong. Please contact the developer'
+                 }
+             });
+         }
+
     });
 };
 
