@@ -13,7 +13,7 @@ function updateCurrency() {
       url: URL
     };
     request(options, function(err, httpResponse, body) {
-    if(httpResponse.statusCode === 403) {
+    if(httpResponse && httpResponse.statusCode === 403) {
         console.log(httpResponse.body);
     }
     if (err) {
