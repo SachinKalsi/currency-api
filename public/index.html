@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Free Currency Converter APIs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+        <h1>Currency Conversion API Details</h1>
+        <ul class="nav navbar-nav pull-right">
+          <li class="active"><a href="#api-details">API Details</a></li>
+          <li><a href="#valid-currencies"> Currency List</a></li>
+        </ul>
+  </div>
+
+    <div id="api-details" class="page-header">
+      <h1>List of APIs</h1>
+          <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">List of Currency Rates</a>
+                  </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                  <div style="margin:10px 14px" >
+                    <dl class="dl-horizontal">
+                      <dt>API:</dt>
+                      <dd><code><a href="/list" target="_blank">http://52.43.52.103:1234/list</a></code></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>METHOD TYPE:</dt>
+                      <dd><code>GET</code></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>QUERY PARAMS:</dt>
+                      <dd><code>source</code></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>DETAILS:</dt>
+                      <dd class="panel-footer" style="width:80%">
+                        This api will get the list of currency rates for a given currency. By default, source currency will be INR & price will be 1 unit.
+                        You can change the source currency through the query param <code>source</code>
+                      </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>EXAMPLE:</dt>
+                      <dd>
+                        <code>
+                          URL: <a href="/list?source=USD" target="_blank">http://52.43.52.103:1234/list?source=USD</a>
+                          <p>
+                            <pre  style="width:95%">
+{
+  success: true,
+  source: "USD",
+  currency_values: [{
+    name: "INR",
+    value: 64.379997
+  },
+  ..]
+}
+</pre>
+                          </p>
+                        </code>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse2">Converstion Of Currency Rates</a>
+                  </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse in">
+                  <div style="margin:10px 14px" >
+                    <dl class="dl-horizontal">
+                      <dt>API:</dt>
+                      <dd><code><a target="_blank">http://52.43.52.103:1234/list/convert?source=CURRENCY_CODE&destination=CURRENCY_CODE</a></code></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>METHOD TYPE:</dt>
+                      <dd><code>GET</code></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>QUERY PARAMS:</dt>
+                      <dd>mandatory: <code> source, destination; </code> optional: <code>price</code></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>DETAILS:</dt>
+                      <dd class="panel-footer" style="width:80%">
+                        This api will convert the currency mentioned in the <code>source</code> query param to the currency mentioned in <code>destination</code> query param.
+                        Both <code>source</code> & <code>destination</code> query params are mandatory. By default price will be taken as 1 unit.
+                        You can change it by passing <code>price</code> query param which is optional
+                      </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>EXAMPLE:</dt>
+                      <dd>
+                        <code>
+                          URL: <a href="/list/convert?source=USD&destination=INR" target="_blank">http://52.43.52.103:1234/list/convert?source=USD&destination=INR</a>
+                          <p>
+                            <pre  style="width:95%">
+{
+  success: true,
+  source: "USD",
+  destination: "INR",
+  price: 1,
+  converted_value: 64.379997
+}
+</pre>
+                          </p>
+                        </code>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="well">
+            Note:
+            <ul>
+              <li>Each response from the server will be a JSON object</li>
+              <li>Each response will have a boolean field <code>success</code>, which is set to true in case of success</li>
+              <li><code>errors</code> field will show the reasons for a unsuccessful call</li>
+            </ul>
+
+          </div>
+    </div>
+    <div id="valid-currencies" class="page-header">
+      <h1>Valid Currency List</h1>
+      <div class="well">
+        <code>
+          AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BRL, BSD, BTC, BTN, BWP, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EEK, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GGP, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, IMP, INR, IQD, IRR, ISK, JEP, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LTL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLL, SOS, SRD, STD, SVC, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VND, VUV, WST, XAF, XAG, XAU, XCD, XDR, XOF, XPF, YER, ZAR, ZMK, ZMW, ZWL, BYN, BYR, BZD, CAD, CDF, CHF, CLF, CLP, CNY, COP
+        </code>
+      </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

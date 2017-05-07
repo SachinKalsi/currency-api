@@ -13,6 +13,7 @@ require('./config/compile-models');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 //logger
 app.use(function(req, res, next) {
