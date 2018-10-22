@@ -18,3 +18,12 @@ API for currency conversion
 * [Node](https://nodejs.org) - A JavaScript runtime built on Chrome's V8 JavaScript engine
 * [Express](https://expressjs.com) - A web framework for Node.js
 * [MongoDB](https://www.mongodb.com/) - NoSQL database
+
+## API Endpoints
+
+1. **[GET - currency list](https://gentle-scrubland-61562.herokuapp.com/list)**
+2. **[GET - currency conversion](https://gentle-scrubland-61562.herokuapp.com/list/convert?source=USD&destination=INR)**
+
+Please refer [here](https://gentle-scrubland-61562.herokuapp.com/#api-details) for detailed documentation
+
+**_P.S: The real-time currency rates are updated every one minute_**
