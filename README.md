@@ -21,10 +21,10 @@ API for currency conversion
 
 ## API Endpoints
 
-1. **[GET - currency list](https://gentle-scrubland-61562.herokuapp.com/list)**
-2. **[GET - currency conversion](https://gentle-scrubland-61562.herokuapp.com/list/convert?source=USD&destination=INR)**
+1. **[GET - currency list](https://free-currency.herokuapp.com/list)**
+2. **[GET - currency conversion](https://free-currency.herokuapp.com/list/convert?source=USD&destination=INR)**
 
-Please refer [here](https://gentle-scrubland-61562.herokuapp.com/#api-details) for detailed documentation
+Please refer [here](https://free-currency.herokuapp.com/#api-details) for detailed documentation
 
 **_P.S: The real-time currency rates are updated every one minute_**
 
